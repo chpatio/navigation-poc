@@ -1,0 +1,183 @@
+/* ═══ Layer 1 ═══
+   Colour ramps live in tokens/palette.css — the complete set from the Figma file
+   (241 steps across 14 families + alphas). Only two literals live here, both required by
+   this system and absent from the kit's ramps. */
+:root{
+--color-neutral-98:#fafafa; /* table row striping (Figma Specialty/Row striping) */
+--color-alpha-black-15:rgba(0,0,0,.15); /* modal scrim (Figma Specialty/Modal background) */
+
+/* Gradients — first-class palette primitives */
+--gradient-day-morning:linear-gradient(180deg,#90d0fe 0%,#eaf5fe 100%); /* @kind color */
+--gradient-day-midday:linear-gradient(180deg,#00b3ff 0%,#90d0fe 50%,#eaf5fe 100%); /* @kind color */
+--gradient-day-dusk:linear-gradient(180deg,#066afe 0%,#00b3ff 40%,#90d0fe 75%,#eaf5fe 100%); /* @kind color */
+--gradient-day-secondary-pink-1:linear-gradient(180deg,#90d0fe 0%,#eaf5fe 62.02%,#fef0f3 100%); /* @kind color */
+--gradient-day-secondary-yellow-1:linear-gradient(180deg,#90d0fe 0%,#eaf5fe 62.02%,#fbf3e0 100%); /* @kind color */
+--gradient-day-secondary-teal-1:linear-gradient(180deg,#90d0fe 0%,#eaf5fe 62.02%,#def9f3 100%); /* @kind color */
+--gradient-day-secondary-violet-1:linear-gradient(180deg,#90d0fe 0%,#eaf5fe 62.02%,#f9f0ff 100%); /* @kind color */
+--gradient-night-evening:linear-gradient(180deg,#001e5b 0%,#022ac0 35.2%,#066afe 75%,#00b3ff 100%); /* @kind color */
+--gradient-cta-edge-day:linear-gradient(85deg,rgba(6,106,254,.9) 0%,rgba(6,106,254,.9) 74.68%,rgba(6,106,254,.35) 99.86%); /* @kind color */
+--gradient-cta-edge-night:linear-gradient(85deg,rgba(255,255,255,.9) 0%,rgba(255,255,255,.9) 74.68%,rgba(255,255,255,.35) 99.86%); /* @kind color */
+
+/* Tint fades — a 95 (or Green 90) tint dissolving to transparent from the top or bottom
+   edge. Use over a photograph or an adjacent band so the tint meets it without a seam;
+   `-from-top` lands the solid end at the blade's bottom, `-from-bottom` at its top. */
+--gradient-hot-orange-95-from-top:linear-gradient(180deg,rgba(254, 241, 237, 0) 0%,#fef1ed 100%); /* @kind color */
+--gradient-hot-orange-95-from-bottom:linear-gradient(180deg,#fef1ed 0%,rgba(254, 241, 237, 0) 100%); /* @kind color */
+--gradient-orange-95-from-top:linear-gradient(180deg,rgba(255, 241, 234, 0) 0%,#fff1ea 100%); /* @kind color */
+--gradient-orange-95-from-bottom:linear-gradient(180deg,#fef1ed 0%,rgba(254, 241, 237, 0) 100%); /* @kind color */
+--gradient-yellow-95-from-top:linear-gradient(180deg,rgba(251, 243, 224, 0) 0%,#fbf3e0 100%); /* @kind color */
+--gradient-yellow-95-from-bottom:linear-gradient(180deg,#fbf3e0 0%,rgba(251, 243, 224, 0) 100%); /* @kind color */
+--gradient-green-90-from-top:linear-gradient(180deg,rgba(205, 239, 196, 0) 0%,#cdefc4 100%); /* @kind color */
+--gradient-green-90-from-bottom:linear-gradient(180deg,#cdefc4 0%,rgba(205, 239, 196, 0) 100%); /* @kind color */
+--gradient-teal-95-from-top:linear-gradient(180deg,rgba(222, 249, 243, 0) 0%,#def9f3 100%); /* @kind color */
+--gradient-teal-95-from-bottom:linear-gradient(180deg,#def9f3 0%,rgba(222, 249, 243, 0) 100%); /* @kind color */
+--gradient-cloud-blue-95-from-top:linear-gradient(180deg,rgba(234, 245, 254, 0) 0%,#eaf5fe 100%); /* @kind color */
+--gradient-cloud-blue-95-from-bottom:linear-gradient(180deg,#eaf5fe 0%,rgba(234, 245, 254, 0) 100%); /* @kind color */
+--gradient-blue-95-from-top:linear-gradient(180deg,rgba(238, 244, 255, 0) 0%,#eef4ff 100%); /* @kind color */
+--gradient-blue-95-from-bottom:linear-gradient(180deg,#eef4ff 0%,rgba(238, 244, 255, 0) 100%); /* @kind color */
+--gradient-indigo-95-from-top:linear-gradient(180deg,rgba(241, 243, 251, 0) 0%,#f1f3fb 100%); /* @kind color */
+--gradient-indigo-95-from-bottom:linear-gradient(180deg,#f1f3fb 0%,rgba(241, 243, 251, 0) 100%); /* @kind color */
+--gradient-purple-95-from-top:linear-gradient(180deg,rgba(246, 242, 251, 0) 0%,#f6f2fb 100%); /* @kind color */
+--gradient-purple-95-from-bottom:linear-gradient(224deg,#f6f2fb 0%,rgba(246, 242, 251, 0) 100%); /* @kind color */
+--gradient-violet-95-from-top:linear-gradient(180deg,rgba(249, 240, 255, 0) 0%,#f9f0ff 100%); /* @kind color */
+--gradient-violet-95-from-bottom:linear-gradient(180deg,#f9f0ff 0%,rgba(249, 240, 255, 0) 100%); /* @kind color */
+--gradient-pink-95-from-top:linear-gradient(180deg,rgba(254, 240, 243, 0) 0%,#fef0f3 100%); /* @kind color */
+--gradient-pink-95-from-bottom:linear-gradient(180deg,#fef0f3 0%,rgba(254, 240, 243, 0) 100%); /* @kind color */
+--gradient-aubergine-95-from-top:linear-gradient(180deg,rgba(250, 240, 255, 0) 0%,#faf0ff 100%); /* @kind color */
+--gradient-aubergine-95-from-bottom:linear-gradient(180deg,#faf0ff 0%,rgba(250, 240, 255, 0) 100%); /* @kind color */
+
+/* ═══ Layer 2 — semantic aliases, Day chain ═══
+   One row per variable in the Figma "Semantic Colors" collection (Day mode), named per
+   DMS spec/aliases.md. Components read ONLY these — never a primitive, never a hex. */
+
+/* Surfaces */
+--color-background-1:var(--color-white);--color-surface-1:var(--color-white);
+--color-surface-container-1:var(--color-white);--color-surface-container-2:var(--color-cloud-blue-95);
+--color-surface-row-striping:var(--color-neutral-98);--color-scrim:var(--color-alpha-black-15);
+--color-state-layer-color:var(--color-black);--color-state-layer-opacity-hover:0.08;--color-state-layer-opacity-active:0.12;
+
+/* Accent fills */
+--color-fill-accent:var(--color-electric-blue-50);--color-fill-accent-hover:var(--color-electric-blue-30);--color-fill-accent-active:var(--color-electric-blue-20);
+--color-on-fill-accent:var(--color-white);--color-on-fill-accent-hover:var(--color-white);--color-on-fill-accent-active:var(--color-white);
+
+/* Neutral fills */
+--color-fill-neutral:var(--color-white);--color-fill-neutral-hover:var(--color-cloud-blue-95);--color-fill-neutral-active:var(--color-cloud-blue-95);
+--color-on-fill-neutral:var(--color-neutral-10);--color-on-fill-neutral-hover:var(--color-neutral-10);--color-on-fill-neutral-active:var(--color-neutral-10);
+--color-on-fill-neutral-accent:var(--color-electric-blue-30);--color-on-fill-neutral-accent-hover:var(--color-electric-blue-20);--color-on-fill-neutral-accent-active:var(--color-electric-blue-20);
+--color-on-fill-neutral-brand:var(--color-electric-blue-30);--color-on-fill-neutral-muted:var(--color-neutral-50);
+
+/* Brand fills — solid brand-blue chrome (nav pills, brand badges) */
+--color-fill-brand-1:var(--color-electric-blue-50);--color-fill-brand-2:var(--color-electric-blue-20);
+--color-border-brand-1:var(--color-electric-blue-50);--color-on-fill-brand-inverse:var(--color-white);
+
+/* Disabled */
+--color-fill-disabled-1:var(--color-neutral-95);--color-fill-disabled-2:var(--color-neutral-80);--color-fill-disabled-3:var(--color-neutral-50);
+--color-on-fill-disabled-1:var(--color-neutral-60);--color-on-fill-disabled-2:var(--color-white);--color-on-fill-disabled-3:var(--color-white);
+--color-on-surface-disabled:var(--color-neutral-60);--color-border-disabled:var(--color-neutral-80);
+
+/* Ink on surfaces */
+--color-on-surface-1:var(--color-electric-blue-15);--color-on-surface-2:var(--color-neutral-10);
+--color-on-surface-3:var(--color-neutral-30);--color-on-surface-4:var(--color-neutral-50);
+--color-on-surface-highlight:var(--color-electric-blue-50);
+
+/* Links */
+--color-link:var(--color-electric-blue-30);--color-link-hover:var(--color-electric-blue-20);--color-link-active:var(--color-electric-blue-20);
+
+/* Borders */
+--color-border-1:var(--color-neutral-95);--color-border-2:var(--color-neutral-90);--color-border-3:var(--color-neutral-80);
+--color-border-neutral:var(--color-neutral-50);--color-border-neutral-hover:var(--color-electric-blue-30);--color-border-neutral-active:var(--color-electric-blue-30);
+--color-border-accent:var(--color-electric-blue-30);--color-border-accent-hover:var(--color-electric-blue-20);--color-border-accent-active:var(--color-electric-blue-20);
+--color-border-focus:var(--color-electric-blue-50);
+
+/* Feedback — Error / Success / Warning / Info. Semantics v2.0, group D.
+   Error is the only two-step family: -1 = subtle tinted container, -2 = bold saturated fill,
+   each with its paired ink. Success / warning / info are single-step — no numeric suffix. */
+--color-fill-error-1:var(--color-red-95);--color-fill-error-2:var(--color-red-50);
+--color-on-fill-error-1:var(--color-red-50);--color-on-fill-error-2:var(--color-white);
+--color-border-error:var(--color-red-50);--color-on-surface-error:var(--color-red-50);
+--color-fill-success:var(--color-green-95);
+--color-on-fill-success:var(--color-green-50);--color-border-success:var(--color-green-50);--color-on-surface-success:var(--color-green-50);
+--color-fill-warning:var(--color-yellow-95);
+--color-on-fill-warning:var(--color-yellow-50);--color-border-warning:var(--color-yellow-50);--color-on-surface-warning:var(--color-yellow-50);
+--color-fill-info:var(--color-cloud-blue-95);
+--color-on-fill-info:var(--color-electric-blue-50);--color-border-info:var(--color-electric-blue-50);--color-on-surface-info:var(--color-electric-blue-50);
+
+/* Speciality Teal — informational accent on an accent surface (DMS spec/aliases.md §1.8) */
+--color-special-use-case-fill:var(--color-teal-60);--color-special-use-case-fill-hover:var(--color-teal-40);
+--color-special-use-case-fill-active:var(--color-teal-40);--color-special-use-case-on-fill:var(--color-white);
+
+/* Free-trial green — the "Try for free" Special CTA (Figma Specialty/Green Validation) */
+--color-fill-free-trial:var(--color-green-50);--color-fill-free-trial-hover:var(--color-green-40);
+--color-on-fill-free-trial:var(--color-white);--color-fill-free-trial-surface:var(--color-green-95);
+
+/* Component-level ladder — Figma CTA-Button component overrides the semantic ladder here.
+   Secondary rests on Electric Blue 30 (rim + label) and steps to Electric Blue 20 on
+   hover / active; the rim is 2px, 1px at Small. */
+--color-cta-primary-bg-hover:var(--color-electric-blue-20);--color-cta-secondary-text:var(--color-electric-blue-30);--color-cta-secondary-text-hover:var(--color-electric-blue-20);
+--color-cta-secondary-ink:var(--color-electric-blue-30);--color-cta-secondary-ink-hover:var(--color-electric-blue-20);
+
+/* WES Components ports — states the marketing kit has no counterpart for */
+--color-fill-danger:var(--color-red-50);--color-fill-danger-hover:var(--color-red-40);--color-fill-danger-active:var(--color-red-40);--color-on-fill-danger:var(--color-white);
+--color-fill-loading:var(--color-fill-disabled-3);--color-on-fill-loading:var(--color-on-fill-disabled-3);
+
+/* Gradient aliases */
+--gradient-page:var(--gradient-day-morning);--gradient-hero:var(--gradient-day-dusk);
+--gradient-accent-pink:var(--gradient-day-secondary-pink-1);--gradient-accent-teal:var(--gradient-day-secondary-teal-1);
+--gradient-accent-yellow:var(--gradient-day-secondary-yellow-1);--gradient-accent-violet:var(--gradient-day-secondary-violet-1);
+--gradient-cta-rim:var(--gradient-cta-edge-day);
+}
+
+/* Day scope — hard rules 6 (card islands) and 7 (chrome is always Day-scoped).
+   Put data-theme="day" on a card, header or footer that must stay light inside a Night
+   page; this block re-binds every alias that resolves differently between the themes. */
+[data-theme="day"]{--color-background-1:var(--color-white);--color-surface-1:var(--color-white);--color-surface-container-1:var(--color-white);--color-surface-container-2:var(--color-cloud-blue-95);--color-state-layer-color:var(--color-black);--color-state-layer-opacity-hover:0.08;--color-state-layer-opacity-active:0.12;--color-fill-accent:var(--color-electric-blue-50);--color-fill-accent-hover:var(--color-electric-blue-30);--color-fill-accent-active:var(--color-electric-blue-20);--color-on-fill-accent:var(--color-white);--color-on-fill-accent-hover:var(--color-white);--color-on-fill-accent-active:var(--color-white);--color-fill-neutral:var(--color-white);--color-fill-neutral-hover:var(--color-cloud-blue-95);--color-fill-neutral-active:var(--color-cloud-blue-95);--color-on-fill-neutral:var(--color-neutral-10);--color-on-fill-neutral-hover:var(--color-neutral-10);--color-on-fill-neutral-active:var(--color-neutral-10);--color-on-fill-neutral-accent:var(--color-electric-blue-30);--color-on-fill-neutral-accent-hover:var(--color-electric-blue-20);--color-on-fill-neutral-accent-active:var(--color-electric-blue-20);--color-on-fill-neutral-brand:var(--color-electric-blue-30);--color-on-fill-neutral-muted:var(--color-neutral-50);--color-fill-brand-1:var(--color-electric-blue-50);--color-fill-brand-2:var(--color-electric-blue-20);--color-border-brand-1:var(--color-electric-blue-50);--color-on-fill-brand-inverse:var(--color-white);--color-fill-disabled-1:var(--color-neutral-95);--color-on-surface-1:var(--color-electric-blue-15);--color-on-surface-2:var(--color-neutral-10);--color-on-surface-3:var(--color-neutral-30);--color-on-surface-4:var(--color-neutral-50);--color-on-surface-highlight:var(--color-electric-blue-50);--color-link:var(--color-electric-blue-30);--color-link-hover:var(--color-electric-blue-20);--color-link-active:var(--color-electric-blue-20);--color-border-1:var(--color-neutral-95);--color-border-2:var(--color-neutral-90);--color-border-3:var(--color-neutral-80);--color-border-neutral:var(--color-neutral-50);--color-border-neutral-hover:var(--color-electric-blue-30);--color-border-neutral-active:var(--color-electric-blue-30);--color-border-accent:var(--color-electric-blue-30);--color-border-accent-hover:var(--color-electric-blue-20);--color-border-accent-active:var(--color-electric-blue-20);--color-border-focus:var(--color-electric-blue-50);--color-border-disabled:var(--color-neutral-80);--color-cta-primary-bg-hover:var(--color-electric-blue-20);--color-cta-secondary-text:var(--color-electric-blue-30);--color-cta-secondary-text-hover:var(--color-electric-blue-20);--color-cta-secondary-ink:var(--color-electric-blue-30);--color-cta-secondary-ink-hover:var(--color-electric-blue-20);--color-fill-error-1:var(--color-red-95);--color-fill-error-2:var(--color-red-50);--color-on-fill-error-1:var(--color-red-50);--color-on-fill-error-2:var(--color-white);--color-border-error:var(--color-red-50);--color-on-surface-error:var(--color-red-50);--color-fill-success:var(--color-green-95);--color-on-fill-success:var(--color-green-50);--color-border-success:var(--color-green-50);--color-on-surface-success:var(--color-green-50);--color-fill-warning:var(--color-yellow-95);--color-on-fill-warning:var(--color-yellow-50);--color-border-warning:var(--color-yellow-50);--color-on-surface-warning:var(--color-yellow-50);--color-fill-info:var(--color-cloud-blue-95);--color-on-fill-info:var(--color-electric-blue-50);--color-border-info:var(--color-electric-blue-50);--color-on-surface-info:var(--color-electric-blue-50);--color-special-use-case-fill:var(--color-teal-60);--color-special-use-case-fill-hover:var(--color-teal-40);--color-special-use-case-fill-active:var(--color-teal-40);--gradient-page:var(--gradient-day-morning);--gradient-hero:var(--gradient-day-dusk);--gradient-accent-pink:var(--gradient-day-secondary-pink-1);--gradient-accent-teal:var(--gradient-day-secondary-teal-1);--gradient-accent-yellow:var(--gradient-day-secondary-yellow-1);--gradient-accent-violet:var(--gradient-day-secondary-violet-1);--gradient-cta-rim:var(--gradient-cta-edge-day);--shadow-elevation-fill-8:rgba(24,24,24,.08);--shadow-elevation-fill-12:rgba(24,24,24,.12);--shadow-elevation-fill-16:rgba(24,24,24,.16);--shadow-elevation-fill-20:rgba(24,24,24,.2);--shadow-elevation-stroke:rgba(24,24,24,.04)}
+
+/* ═══ Night theme — Figma "Semantic Colors" collection, Night mode ═══
+   Re-binds Layer 2 aliases to different primitives only. Never a new hex. */
+[data-theme="night"]{
+--color-background-1:var(--color-electric-blue-10);--color-surface-1:var(--color-electric-blue-15);
+--color-surface-container-1:var(--color-white);--color-surface-container-2:var(--color-cloud-blue-95);
+--color-state-layer-color:var(--color-white);--color-state-layer-opacity-hover:0.12;--color-state-layer-opacity-active:0.2;
+
+--color-fill-accent:var(--color-white);--color-fill-accent-hover:var(--color-alpha-white-85);--color-fill-accent-active:var(--color-alpha-white-85);
+--color-on-fill-accent:var(--color-electric-blue-30);--color-on-fill-accent-hover:var(--color-electric-blue-20);--color-on-fill-accent-active:var(--color-electric-blue-20);
+
+--color-fill-neutral:var(--color-alpha-white-0);--color-fill-neutral-hover:var(--color-alpha-white-25);--color-fill-neutral-active:var(--color-alpha-white-25);
+--color-on-fill-neutral:var(--color-white);--color-on-fill-neutral-hover:var(--color-white);--color-on-fill-neutral-active:var(--color-white);
+--color-on-fill-neutral-accent:var(--color-white);--color-on-fill-neutral-accent-hover:var(--color-white);--color-on-fill-neutral-accent-active:var(--color-white);
+--color-on-fill-neutral-brand:var(--color-electric-blue-30);--color-on-fill-neutral-muted:var(--color-neutral-80);
+
+--color-fill-brand-1:var(--color-white);--color-fill-brand-2:var(--color-white);
+--color-border-brand-1:var(--color-white);--color-on-fill-brand-inverse:var(--color-electric-blue-50);
+
+--color-fill-disabled-1:var(--color-neutral-20);
+
+--color-on-surface-1:var(--color-white);--color-on-surface-2:var(--color-white);--color-on-surface-3:var(--color-white);--color-on-surface-4:var(--color-white);
+--color-on-surface-highlight:var(--color-cloud-blue-80);
+
+--color-link:var(--color-white);--color-link-hover:var(--color-alpha-white-85);--color-link-active:var(--color-alpha-white-85);
+
+--color-border-1:var(--color-alpha-white-15);--color-border-3:var(--color-alpha-white-40);
+--color-border-neutral:var(--color-white);--color-border-neutral-hover:var(--color-electric-blue-80);--color-border-neutral-active:var(--color-electric-blue-80);
+--color-border-accent:var(--color-white);--color-border-accent-hover:var(--color-white);--color-border-accent-active:var(--color-white);
+--color-border-focus:var(--color-white);--color-border-disabled:var(--color-alpha-white-25);
+
+--color-fill-error-1:var(--color-red-15);--color-fill-error-2:var(--color-red-60);--color-on-fill-error-1:var(--color-red-70);
+--color-border-error:var(--color-red-70);--color-on-surface-error:var(--color-red-70);
+--color-fill-success:var(--color-green-15);--color-on-fill-success:var(--color-green-70);
+--color-border-success:var(--color-green-70);--color-on-surface-success:var(--color-green-70);
+--color-fill-warning:var(--color-yellow-20);--color-on-fill-warning:var(--color-yellow-80);
+--color-border-warning:var(--color-yellow-80);--color-on-surface-warning:var(--color-yellow-80);
+--color-fill-info:var(--color-cloud-blue-20);--color-on-fill-info:var(--color-electric-blue-80);
+--color-border-info:var(--color-electric-blue-80);--color-on-surface-info:var(--color-electric-blue-80);
+
+--color-special-use-case-fill:var(--color-teal-60);--color-special-use-case-fill-hover:var(--color-teal-80);
+--color-special-use-case-fill-active:var(--color-teal-80);
+
+--color-cta-primary-bg-hover:var(--color-alpha-white-85);--color-cta-secondary-text:var(--color-white);--color-cta-secondary-text-hover:var(--color-white);
+--color-cta-secondary-ink:var(--color-white);--color-cta-secondary-ink-hover:var(--color-white);
+
+--gradient-page:var(--gradient-night-evening);--gradient-hero:var(--gradient-night-evening);
+--gradient-accent-pink:transparent;--gradient-accent-teal:transparent;--gradient-accent-yellow:transparent;--gradient-accent-violet:transparent;
+--gradient-cta-rim:var(--gradient-cta-edge-night);
+}

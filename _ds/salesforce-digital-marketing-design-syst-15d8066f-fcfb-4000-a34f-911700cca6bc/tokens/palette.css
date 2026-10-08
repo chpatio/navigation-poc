@@ -1,0 +1,42 @@
+/* Layer 1 — the COMPLETE colour ramps from the Figma file.
+   Every literal colour the kit defines, in one place, named --color-<family>-<step>.
+   241 ramp steps across 14 families plus 10 alpha values.
+   tokens/colors.css binds the semantic aliases on top of these; it no longer declares
+   primitives of its own. Generated from tokens/figma/fig-tokens.css — regenerate rather than
+   hand-editing, and never add a hex that is not in the kit. */
+:root{
+/* cloud blue — 18 steps */
+--color-cloud-blue-95:#eaf5fe;--color-cloud-blue-90:#cfe9fe;--color-cloud-blue-85:#aeddfe;--color-cloud-blue-80:#90d0fe;--color-cloud-blue-70:#1ab9ff;--color-cloud-blue-68:#00b3ff;--color-cloud-blue-65:#08abed;--color-cloud-blue-60:#0d9dda;--color-cloud-blue-55:#0f8cc2;--color-cloud-blue-50:#107cad;--color-cloud-blue-45:#0b6f9c;--color-cloud-blue-40:#05628a;--color-cloud-blue-35:#075579;--color-cloud-blue-30:#084968;--color-cloud-blue-20:#023248;--color-cloud-blue-15:#0a2636;--color-cloud-blue-10:#001a28;--color-cloud-blue-5:#000409;
+/* electric blue — 17 steps */
+--color-electric-blue-95:#edf4ff;--color-electric-blue-90:#d6e6ff;--color-electric-blue-85:#c2daff;--color-electric-blue-80:#a8cbff;--color-electric-blue-70:#7cb1fe;--color-electric-blue-65:#5f9ffe;--color-electric-blue-60:#4992fe;--color-electric-blue-55:#287efe;--color-electric-blue-50:#066afe;--color-electric-blue-45:#045dec;--color-electric-blue-40:#0250d9;--color-electric-blue-35:#003ecd;--color-electric-blue-30:#022ac0;--color-electric-blue-20:#002775;--color-electric-blue-15:#001e5b;--color-electric-blue-10:#001642;--color-electric-blue-5:#000314;
+/* blue — 17 steps */
+--color-blue-95:#eef4ff;--color-blue-90:#d8e6fe;--color-blue-85:#c2d8ff;--color-blue-80:#aacbff;--color-blue-70:#78b0fd;--color-blue-65:#57a3fd;--color-blue-60:#1b96ff;--color-blue-55:#0684ef;--color-blue-50:#0176d3;--color-blue-45:#0469c1;--color-blue-40:#0b5cab;--color-blue-35:#044f98;--color-blue-30:#014486;--color-blue-20:#032d60;--color-blue-15:#03234d;--color-blue-10:#001639;--color-blue-5:#000310;
+/* neutral — 19 steps */
+--color-neutral-100:#ffffff;--color-neutral-95:#f3f3f3;--color-neutral-90:#e5e5e5;--color-neutral-85:#d7d7d7;--color-neutral-80:#c9c9c9;--color-neutral-70:#aeaeae;--color-neutral-65:#a0a0a0;--color-neutral-60:#939393;--color-neutral-55:#848484;--color-neutral-50:#747474;--color-neutral-45:#696969;--color-neutral-40:#5c5c5c;--color-neutral-35:#515151;--color-neutral-30:#444444;--color-neutral-20:#2e2e2e;--color-neutral-15:#242424;--color-neutral-10:#181818;--color-neutral-5:#020202;--color-neutral-0:#000000;
+/* green — 17 steps */
+--color-green-95:#ebf7e6;--color-green-90:#cdefc4;--color-green-85:#aee4a9;--color-green-80:#91db8b;--color-green-70:#45c65a;--color-green-65:#41b658;--color-green-60:#3ba755;--color-green-55:#359650;--color-green-50:#2e844a;--color-green-45:#287644;--color-green-40:#22683e;--color-green-35:#1e5c39;--color-green-30:#194e31;--color-green-20:#1c3326;--color-green-15:#0c2912;--color-green-10:#071b12;--color-green-5:#010502;
+/* red — 17 steps */
+--color-red-95:#fef1ee;--color-red-90:#feded8;--color-red-85:#feccc3;--color-red-80:#feb8ab;--color-red-70:#fe8f7d;--color-red-65:#fe7765;--color-red-60:#fe5c4c;--color-red-55:#f42e35;--color-red-50:#ea001e;--color-red-45:#d2031b;--color-red-40:#ba0517;--color-red-35:#a40413;--color-red-30:#8e030f;--color-red-20:#640103;--color-red-15:#4a0c04;--color-red-10:#300c01;--color-red-5:#0c0200;
+/* yellow — 17 steps */
+--color-yellow-95:#fbf3e0;--color-yellow-90:#f9e3b6;--color-yellow-85:#f8d462;--color-yellow-80:#fcc003;--color-yellow-70:#e4a201;--color-yellow-65:#da9401;--color-yellow-60:#ca8501;--color-yellow-55:#ba7503;--color-yellow-50:#a96504;--color-yellow-45:#9a5803;--color-yellow-40:#8c4b02;--color-yellow-35:#824308;--color-yellow-30:#6f3400;--color-yellow-20:#4f2100;--color-yellow-15:#371e03;--color-yellow-10:#281202;--color-yellow-5:#090200;
+/* teal — 17 steps */
+--color-teal-95:#def9f3;--color-teal-90:#acf3e4;--color-teal-85:#76ead9;--color-teal-80:#04e1cb;--color-teal-70:#01c3b3;--color-teal-65:#03b4a7;--color-teal-60:#06a59a;--color-teal-55:#09948b;--color-teal-50:#0b827c;--color-teal-45:#087570;--color-teal-40:#056764;--color-teal-35:#035a58;--color-teal-30:#024d4c;--color-teal-20:#023434;--color-teal-15:#072825;--color-teal-10:#071b12;--color-teal-5:#010502;
+/* pink — 17 steps */
+--color-pink-95:#fef0f3;--color-pink-90:#fddde3;--color-pink-85:#fec8d4;--color-pink-80:#fdb6c5;--color-pink-70:#fe8aa7;--color-pink-65:#fe7298;--color-pink-60:#ff538a;--color-pink-55:#f42f7c;--color-pink-50:#e3066a;--color-pink-45:#ce055f;--color-pink-40:#b60554;--color-pink-35:#a00449;--color-pink-30:#8a033e;--color-pink-20:#61022a;--color-pink-15:#4b0620;--color-pink-10:#370114;--color-pink-5:#0f0003;
+/* violet — 17 steps */
+--color-violet-95:#f9f0ff;--color-violet-90:#f2defe;--color-violet-85:#eccdfe;--color-violet-80:#e5b9fe;--color-violet-70:#d892fe;--color-violet-65:#d17dfe;--color-violet-60:#cb65ff;--color-violet-55:#c247f5;--color-violet-50:#ba01ff;--color-violet-45:#a801e4;--color-violet-40:#9602c7;--color-violet-35:#8402ad;--color-violet-30:#730394;--color-violet-20:#580276;--color-violet-15:#3d0157;--color-violet-10:#2e0039;--color-violet-5:#060300;
+/* hot orange — 17 steps */
+--color-hot-orange-95:#fef1ed;--color-hot-orange-90:#ffded5;--color-hot-orange-85:#feccbd;--color-hot-orange-80:#feb9a5;--color-hot-orange-70:#ff906e;--color-hot-orange-65:#ff784f;--color-hot-orange-60:#ff5d2d;--color-hot-orange-55:#f5450a;--color-hot-orange-50:#d83a00;--color-hot-orange-45:#bd2f00;--color-hot-orange-40:#aa3001;--color-hot-orange-35:#942b00;--color-hot-orange-30:#7e2600;--color-hot-orange-20:#541d01;--color-hot-orange-15:#421604;--color-hot-orange-10:#281202;--color-hot-orange-5:#090200;
+/* orange — 17 steps */
+--color-orange-95:#fff1ea;--color-orange-90:#fedfd0;--color-orange-85:#ffccad;--color-orange-80:#ffba90;--color-orange-70:#fe9339;--color-orange-65:#f38303;--color-orange-60:#dd7a01;--color-orange-55:#bf6d03;--color-orange-50:#a96404;--color-orange-45:#965b03;--color-orange-40:#825101;--color-orange-35:#704801;--color-orange-30:#5f3e02;--color-orange-20:#3e2b02;--color-orange-15:#2e2204;--color-orange-10:#201600;--color-orange-5:#060300;
+/* indigo — 17 steps */
+--color-indigo-95:#f1f3fb;--color-indigo-90:#e0e5f8;--color-indigo-85:#cfd4f7;--color-indigo-80:#bec7f6;--color-indigo-70:#9ea9f1;--color-indigo-65:#8e9bef;--color-indigo-60:#7f8ced;--color-indigo-55:#6675ea;--color-indigo-50:#5867e8;--color-indigo-45:#4958e1;--color-indigo-40:#3a49da;--color-indigo-35:#343bc8;--color-indigo-30:#2f2cb7;--color-indigo-20:#270c92;--color-indigo-15:#1f0974;--color-indigo-10:#17094e;--color-indigo-5:#060116;
+/* purple — 17 steps */
+--color-purple-95:#f6f2fb;--color-purple-90:#ece1f9;--color-purple-85:#e2d0f6;--color-purple-80:#d7bff2;--color-purple-70:#c29ef1;--color-purple-65:#b78def;--color-purple-60:#ad7bee;--color-purple-55:#9f67eb;--color-purple-50:#9050e9;--color-purple-45:#833be6;--color-purple-40:#7526e3;--color-purple-35:#681dc9;--color-purple-30:#5a1ba9;--color-purple-20:#401075;--color-purple-15:#300b60;--color-purple-10:#240643;--color-purple-5:#070114;
+/* aubergine — 4 steps (Figma color-families/aubergine) */
+--color-aubergine-95:#faf0ff;--color-aubergine-65:#d083e6;--color-aubergine-30:#6a2872;--color-aubergine-20:#4a154b;
+/* white / black */
+--color-white:#ffffff;--color-black:#000000;
+/* alpha */
+--color-alpha-white-0:rgba(255,255,255,0);--color-alpha-white-10:rgba(255,255,255,0.1);--color-alpha-white-15:rgba(255,255,255,0.15);--color-alpha-white-25:rgba(255,255,255,0.25);--color-alpha-white-40:rgba(255,253,253,0.4);--color-alpha-white-5:rgba(255,255,255,0.05);--color-alpha-white-50:rgba(255,255,255,0.5);--color-alpha-white-60:rgba(255,255,255,0.6);--color-alpha-white-75:rgba(255,255,255,0.75);--color-alpha-white-85:rgba(255,255,255,0.85);
+}

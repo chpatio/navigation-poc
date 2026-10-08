@@ -1,0 +1,42 @@
+:root{
+/* ═══ Layer 1 — 17-step px ladder (Figma "Space" collection) ═══ */
+--space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-5:24px;--space-6:32px;--space-7:40px;--space-8:48px;
+--space-9:56px;--space-10:64px;--space-11:72px;--space-12:80px;--space-13:88px;--space-14:96px;--space-15:104px;--space-16:112px;--space-17:120px;
+
+/* ═══ Layer 2 — role aliases, Default spacing theme (DMS spec/aliases.md §4.2) ═══ */
+--space-layout-margin:var(--space-8);--space-layout-margin-md:var(--space-6);--space-layout-margin-sm:var(--space-5);
+--space-layout-gutter:var(--space-7);--space-layout-gutter-md:var(--space-6);--space-layout-gutter-sm:var(--space-5);
+--space-layout-gap-lg:var(--space-10);--space-layout-gap:var(--space-8);--space-layout-gap-md:var(--space-6);--space-layout-gap-sm:var(--space-5);
+--space-surface-padding:var(--space-6);--space-surface-padding-md:var(--space-5);--space-surface-padding-sm:var(--space-3);
+--space-container-padding-xl:var(--space-10);--space-container-padding-lg:var(--space-9);--space-container-padding:var(--space-8);
+--space-container-padding-md:var(--space-7);--space-container-padding-sm:var(--space-6);--space-container-padding-xs:var(--space-5);
+--space-content-2xs:var(--space-1);--space-content-xs:var(--space-2);--space-content-sm:var(--space-3);--space-content-md:var(--space-4);
+--space-content-lg:var(--space-5);--space-content-xl:var(--space-6);--space-content-2xl:var(--space-8);--space-content-3xl:var(--space-10);
+--space-interactive-2xs:var(--space-1);--space-interactive-xs:var(--space-2);--space-interactive-sm:var(--space-3);
+--space-interactive-md:var(--space-4);--space-interactive-lg:var(--space-5);--space-interactive-xl:var(--space-6);
+
+/* ═══ Grid bindings — five breakpoints (DMS spec/aliases.md §4.3) ═══
+   Each geometry chains to a layout alias, so a spacing theme re-binds the alias once and
+   every breakpoint follows. Never repeat these per theme. */
+--space-grid-large-desktop-columns:12;--space-grid-large-desktop-margin:var(--space-layout-margin);--space-grid-large-desktop-gutter:var(--space-layout-gutter);
+--space-grid-large-desktop-surface-padding:var(--space-surface-padding);--space-grid-large-desktop-min-viewport:1600px;--space-grid-large-desktop-max-content-width:1280px;
+--space-grid-desktop-columns:12;--space-grid-desktop-margin:var(--space-layout-margin);--space-grid-desktop-gutter:var(--space-layout-gutter);
+--space-grid-desktop-surface-padding:var(--space-surface-padding);--space-grid-desktop-min-viewport:1440px;--space-grid-desktop-max-content-width:1280px;
+--space-grid-tablet-landscape-columns:12;--space-grid-tablet-landscape-margin:var(--space-layout-margin);--space-grid-tablet-landscape-gutter:var(--space-layout-gutter-md);
+--space-grid-tablet-landscape-surface-padding:var(--space-surface-padding);--space-grid-tablet-landscape-min-viewport:1024px;--space-grid-tablet-landscape-max-content-width:1280px;
+--space-grid-tablet-portrait-columns:12;--space-grid-tablet-portrait-margin:var(--space-layout-margin-md);--space-grid-tablet-portrait-gutter:var(--space-layout-gutter-sm);
+--space-grid-tablet-portrait-surface-padding:var(--space-surface-padding-md);--space-grid-tablet-portrait-min-viewport:768px;--space-grid-tablet-portrait-max-content-width:1280px;
+--space-grid-mobile-columns:6;--space-grid-mobile-margin:var(--space-layout-margin-sm);--space-grid-mobile-gutter:var(--space-layout-gutter-sm);
+--space-grid-mobile-surface-padding:var(--space-surface-padding-md);--space-grid-mobile-min-viewport:0px;--space-grid-mobile-max-content-width:1280px;
+
+/* ═══ Page grid — the ONE content container ═══
+   Content is capped at 1280px at EVERY breakpoint; only the outer margin, the gutter and the
+   column count step. Blocks read the --space-page-* aliases, never a per-breakpoint token, so
+   the active geometry resolves once here instead of in every component. */
+--space-grid-max-content-width:1280px;
+}
+/* Page-grid resolution — mobile-first; Large Desktop (≥1600) matches Desktop, so no query. */
+:root{--space-page-columns:6;--space-page-margin:var(--space-grid-mobile-margin);--space-page-gutter:var(--space-grid-mobile-gutter);--space-page-surface-padding:var(--space-grid-mobile-surface-padding)}
+@media (min-width:768px){:root{--space-page-columns:12;--space-page-margin:var(--space-grid-tablet-portrait-margin);--space-page-gutter:var(--space-grid-tablet-portrait-gutter);--space-page-surface-padding:var(--space-grid-tablet-portrait-surface-padding)}}
+@media (min-width:1024px){:root{--space-page-margin:var(--space-grid-tablet-landscape-margin);--space-page-gutter:var(--space-grid-tablet-landscape-gutter);--space-page-surface-padding:var(--space-grid-tablet-landscape-surface-padding)}}
+@media (min-width:1440px){:root{--space-page-margin:var(--space-grid-desktop-margin);--space-page-gutter:var(--space-grid-desktop-gutter);--space-page-surface-padding:var(--space-grid-desktop-surface-padding)}}

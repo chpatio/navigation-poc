@@ -1,0 +1,173 @@
+/* ═══ Block layout cascades ═══
+   The responsive behaviour of the page-section blocks, in one file — ported from the
+   production per-block CSS. Breakpoints match the kit's grid: mobile <768 · tablet-portrait
+   768–1023 · tablet-landscape 1024–1439 · desktop ≥1440.
+
+   Components own their skin inline (tokens only); layout that needs media queries lives here
+   because an inline style cannot express one. Canonical unprefixed token names throughout.
+
+   Band padding and gutters are NOT re-declared per breakpoint here — --space-page-margin,
+   --space-page-gutter and --space-page-surface-padding already resolve to the active
+   breakpoint in tokens/spacing.css. Only column counts and stacking live in this file. */
+
+/* ── Blade: two-column bands collapse to one; band padding comes from the page grid ──── */
+.sf-blade{padding-block:var(--space-page-surface-padding);padding-inline:var(--space-page-margin)}
+.sf-blade-2col{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--space-layout-gap);align-items:center}
+@media (min-width:1024px){.sf-blade-2col{grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-layout-gutter)}}
+/* An asset that follows the copy in source order moves above it when the band stacks. */
+@media (max-width:1023px){.sf-blade-2col[data-asset="left"] > :first-child{order:2}}
+
+/* ── Equal-height card rows (system rule) ──────────────────────────────────────
+   Every card in a row is the height of the tallest card in that row. The row is a flex
+   container with the default align-items:stretch, so each wrapper is already full height —
+   the missing half was the card FILLING its wrapper. Two levels, not one:
+     .sf-cards-row > *      the wrapper becomes a flex box so its child can grow
+     .sf-cards-row > * > *  the card grows to fill it
+   Never height:100% on the card itself: it collapses inside a grid track and clips shadows.
+   Masonry is exempt by design — it flows columns at natural heights. */
+.sf-cards-row > *{display:flex;min-width:0}
+.sf-cards-row > * > *{flex:1 1 auto;min-width:0}
+
+/* ── Card row: the orphan-free column cascade, as a class templates can use ──
+   Same steps as the CardGrid block (1→2/3→4). A full row fills the track; an incomplete
+   trailing row centres under the rows above, which CSS grid cannot do. */
+.sf-cards-flex{display:flex;flex-wrap:wrap;justify-content:center;align-items:stretch;gap:var(--space-layout-gutter);width:100%}
+.sf-cards-flex > *{flex:0 1 100%;min-width:0;box-sizing:border-box;display:flex}
+@media (min-width:768px){.sf-cards-flex[data-columns="2"] > *,.sf-cards-flex[data-columns="4"] > *{flex-basis:calc((100% - var(--space-layout-gutter)) / 2)}
+  .sf-cards-flex[data-columns="3"] > *{flex-basis:calc((100% - 2 * var(--space-layout-gutter)) / 3)}}
+@media (min-width:1024px){.sf-cards-flex[data-columns="4"] > *{flex-basis:calc((100% - 3 * var(--space-layout-gutter)) / 4)}}
+
+/* ── Mosaic / inline grid: 1 → 2 → auto-fit(260px) ─────────────────────────── */
+.sf-mosaic{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--space-layout-gutter);align-items:stretch}
+.sf-mosaic > *{min-width:0;display:flex}
+@media (min-width:768px){.sf-mosaic{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:1024px){.sf-mosaic{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}}
+/* Masonry flows columns at natural heights instead. */
+.sf-masonry{column-count:1;column-gap:var(--space-layout-gutter)}
+.sf-masonry > *{break-inside:avoid;margin-bottom:var(--space-layout-gutter)}
+@media (min-width:768px){.sf-masonry{column-count:2}}
+@media (min-width:1024px){.sf-masonry{column-count:3}}
+
+/* ── Carousel track: cards per view steps with the viewport ────────────────── */
+.sf-track{display:flex;gap:var(--space-layout-gutter);overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;
+  /* padding + negative margin so Level 2 card shadows are not clipped (hard rule 2f) */
+  padding:var(--space-content-lg);margin:calc(-1 * var(--space-content-lg))}
+.sf-track::-webkit-scrollbar{display:none}
+.sf-track > *{flex:0 0 100%;min-width:0;scroll-snap-align:start}
+@media (min-width:768px){.sf-track > *{flex-basis:calc((100% - var(--space-layout-gutter)) / 2)}}
+@media (min-width:1024px){
+  .sf-track[data-visible="3"] > *{flex-basis:calc((100% - 2 * var(--space-layout-gutter)) / 3)}
+  .sf-track[data-visible="4"] > *{flex-basis:calc((100% - 3 * var(--space-layout-gutter)) / 4)}
+}
+
+/* ── Tabs: the vertical rail sits beside the panel only from tablet-landscape ─ */
+.sf-tabs{display:flex;flex-direction:column;gap:var(--space-content-2xl)}
+.sf-tabs-vertical{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--space-layout-gutter)}
+@media (min-width:1024px){.sf-tabs-vertical{grid-template-columns:minmax(200px,260px) minmax(0,1fr)}}
+/* Horizontal tab strip scrolls rather than wrapping to a second row. */
+.sf-tablist{display:flex;gap:var(--space-content-lg);overflow-x:auto;scrollbar-width:none}
+.sf-tablist::-webkit-scrollbar{display:none}
+.sf-tablist > *{flex-shrink:0}
+
+/* ── Table: scrolls horizontally on mobile instead of crushing its columns ─── */
+.sf-table-scroll{width:100%;overflow-x:auto;border:var(--border-width-1) solid var(--color-border-2);border-radius:var(--radius-card-nested);background:var(--color-surface-container-1)}
+.sf-table-scroll > *{min-width:640px}
+@media (min-width:768px){.sf-table-scroll > *{min-width:0}}
+
+/* ── Row stacks: pinned columns above mobile, stacked below (hard rule 2e) ─── */
+.sf-row-agenda{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--space-content-xs);padding-block:var(--space-interactive-sm)}
+@media (min-width:768px){.sf-row-agenda{grid-template-columns:72px minmax(0,1fr) auto;gap:var(--space-content-md);align-items:baseline}}
+.sf-row-list{display:grid;grid-template-columns:56px minmax(0,1fr) auto;gap:var(--space-content-md);align-items:center;padding-block:var(--space-interactive-sm)}
+@media (min-width:768px){.sf-row-list{grid-template-columns:64px minmax(0,1fr) auto}}
+
+/* ── Logo wall / grid ──────────────────────────────────────────────────────── */
+.sf-logos{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:var(--space-layout-gap);width:100%}
+.sf-logo-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));width:100%;border:var(--border-width-1) solid var(--color-border-2);border-radius:var(--radius-card-nested);overflow:hidden}
+@media (min-width:768px){.sf-logo-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (min-width:1024px){.sf-logo-grid{grid-template-columns:repeat(6,minmax(0,1fr))}}
+
+/* ── Filter rail: a sidebar on desktop, full-width above the results below ──── */
+.sf-filter-rail{width:100%;max-width:280px}
+@media (max-width:767px){.sf-filter-rail{max-width:100%}}
+.sf-filter-layout{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--space-layout-gutter);align-items:start}
+@media (min-width:1024px){.sf-filter-layout{grid-template-columns:280px minmax(0,1fr)}}
+
+/* ═══ Editable-markup skins ═══
+   Templates carry their own copy as markup so every word is click-editable. These classes
+   give that markup the kit's field, form-island, disclosure and facet skins — the parts that
+   need media queries or pseudo-elements, which an inline style cannot express. */
+
+/* ── Form island: copy column beside a 640px card; rows of at most two fields ── */
+.sf-form-wrap{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--space-layout-gutter);align-items:start;max-width:var(--space-grid-max-content-width);margin:0 auto}
+@media (min-width:1024px){.sf-form-wrap[data-layout="split"]{grid-template-columns:minmax(0,1fr) minmax(0,1.2fr)}}
+/* Stacked: one column, so the copy block and the island both centre on the frame and the
+   copy centres within itself — left-aligned text under a centred column reads as a mistake. */
+.sf-form-wrap[data-layout="stacked"] > *{margin-inline:auto}
+.sf-form-wrap[data-layout="stacked"] > :first-child{align-items:center;text-align:center}
+.sf-form-island{display:flex;flex-direction:column;gap:var(--space-content-xl);width:100%;max-width:640px;margin-inline:auto;box-sizing:border-box;padding:var(--space-content-2xl);border-radius:var(--radius-image-large);background:var(--color-surface-container-1);border:var(--border-width-1) solid var(--shadow-elevation-stroke);box-shadow:var(--shadow-elevation-2)}
+.sf-form-island *{box-sizing:border-box}
+.sf-form-fields{display:flex;flex-direction:column;gap:var(--space-content-sm);width:100%}
+.sf-form-row{display:flex;align-items:flex-start;gap:var(--space-content-lg);width:100%}
+.sf-form-row > *{flex:1 1 0;min-width:0}
+@media (max-width:767px){
+  .sf-form-island{gap:var(--space-content-lg);padding:var(--space-content-xl);max-width:100%}
+  .sf-form-row{flex-direction:column;gap:var(--space-content-sm)}
+  .sf-form-row > *{flex:1 1 100%;width:100%}
+}
+@media (max-width:479px){.sf-form-island{padding:var(--space-content-md)}}
+
+/* ── Field: the label is markup (editable in place); the control keeps the kit skin —
+   1px resting rim, 2px on hover, 2px accent on focus, no browser outline. ── */
+.sf-field{display:flex;flex-direction:column;gap:var(--space-content-2xs);min-width:0}
+.sf-field > span{font-family:var(--font-style-body-copy-4-bold-family);font-weight:var(--font-weight-bold);font-size:var(--font-style-body-copy-4-bold-size);line-height:var(--font-style-body-copy-4-bold-line-height);color:var(--color-on-surface-2)}
+/* Same construction as FieldShell: --radius-input corners, a real 1px rim that thickens to
+   2px when engaged, neutral fill, 44px minimum height, inset focus ring. */
+.sf-field :where(input,select,textarea){width:100%;min-width:0;min-height:44px;box-sizing:border-box;padding:var(--space-interactive-xs) var(--space-interactive-sm);border:var(--border-width-1) solid var(--color-border-neutral);border-radius:var(--radius-input);background:var(--color-fill-neutral);color:var(--color-on-fill-neutral);font-family:var(--font-style-body-copy-3-family);font-size:var(--font-style-body-copy-3-size);line-height:var(--font-style-body-copy-3-line-height);letter-spacing:var(--font-style-body-copy-3-letter-spacing);appearance:none;transition:background-color var(--motion-duration-fast) var(--motion-easing),border-color var(--motion-duration-fast) var(--motion-easing),box-shadow var(--motion-duration-fast) var(--motion-easing)}
+.sf-field :where(input,select,textarea):hover{border-width:var(--border-width-2);background:var(--color-fill-neutral-hover);border-color:var(--color-border-neutral-hover)}
+.sf-field :where(input,select,textarea):focus{outline:none;border-width:var(--border-width-2);border-color:var(--color-border-neutral-hover);background:var(--color-fill-neutral-hover);box-shadow:inset 0 0 0 2px var(--color-border-focus)}
+.sf-field :where(input,select,textarea)::placeholder{color:var(--color-on-surface-4)}
+.sf-field select{background-image:linear-gradient(45deg,transparent 50%,var(--color-on-surface-3) 50%),linear-gradient(135deg,var(--color-on-surface-3) 50%,transparent 50%);background-position:calc(100% - 20px) 50%,calc(100% - 14px) 50%;background-size:6px 6px,6px 6px;background-repeat:no-repeat;padding-right:44px}
+.sf-field-note{font-family:var(--font-style-body-copy-5-family);font-size:var(--font-style-body-copy-5-size);line-height:var(--font-style-body-copy-5-line-height);color:var(--color-on-surface-2)}
+.sf-field-note a,.sf-consent a{color:var(--color-link)}
+.sf-consent{display:flex;align-items:flex-start;gap:10px;min-width:0;cursor:pointer;font-family:var(--font-style-body-copy-4-family);font-size:var(--font-style-body-copy-4-size);line-height:var(--font-style-body-copy-4-line-height);color:var(--color-on-surface-2)}
+.sf-consent input{width:16px;height:16px;flex-shrink:0;margin:3px 0 0;accent-color:var(--color-fill-accent)}
+
+/* ── Disclosure as native details/summary, so the question is editable text ── */
+.sf-faq{border-top:var(--border-width-1) solid var(--color-border-2)}
+.sf-faq:last-of-type{border-bottom:var(--border-width-1) solid var(--color-border-2)}
+.sf-faq > summary,.sf-facet > summary{display:flex;align-items:center;justify-content:space-between;gap:var(--space-content-md);cursor:pointer;list-style:none;color:var(--color-on-surface-1)}
+.sf-faq > summary::-webkit-details-marker,.sf-facet > summary::-webkit-details-marker{display:none}
+.sf-faq > summary{padding:var(--space-content-lg) 0;font-family:var(--font-style-display-8-family);font-weight:var(--font-style-display-8-weight);font-size:var(--font-style-display-8-size);line-height:var(--font-style-display-8-line-height)}
+.sf-faq > summary::after,.sf-facet > summary::after{content:"";flex:0 0 auto;width:9px;height:9px;border-right:2px solid var(--color-on-surface-3);border-bottom:2px solid var(--color-on-surface-3);transform:rotate(45deg) translateY(-2px);transition:transform var(--motion-duration-fast) var(--motion-easing)}
+.sf-faq[open] > summary::after,.sf-facet[open] > summary::after{transform:rotate(225deg) translateY(-2px)}
+.sf-faq > div{padding:0 0 var(--space-content-lg);max-width:70ch;font-family:var(--font-style-body-copy-3-family);font-size:var(--font-style-body-copy-3-size);line-height:var(--font-style-body-copy-3-line-height);color:var(--color-on-surface-3)}
+
+/* ── Facet group in a filter rail: same disclosure, tighter rhythm ── */
+.sf-facet{border-top:var(--border-width-1) solid var(--color-border-2);padding-block:var(--space-content-sm)}
+.sf-facet > summary{padding-block:var(--space-content-xs);font-family:var(--font-style-body-copy-3-bold-family);font-weight:var(--font-weight-bold);font-size:var(--font-style-body-copy-3-bold-size);line-height:var(--font-style-body-copy-3-bold-line-height)}
+.sf-facet > div{display:flex;flex-direction:column;gap:var(--space-content-xs);padding-top:var(--space-content-sm)}
+
+/* ── Logo wall placeholder mark, until real customer marks are dropped in ── */
+.sf-logo-ph{width:110px;height:24px;border-radius:var(--radius-4);background:repeating-linear-gradient(135deg,var(--color-border-1) 0 6px,var(--color-surface-1) 6px 12px)}
+
+/* ── Card shell as a class, so a template can hold the card's words as markup and still
+   get the island skin and the hover ladder the Card component gives. ── */
+.sf-card{position:relative;display:flex;flex-direction:column;width:100%;overflow:hidden;text-align:left;background:var(--color-white);border:1px solid rgba(24,24,24,.04);border-radius:var(--radius-card);box-shadow:var(--shadow-elevation-2);transition:border-color var(--motion-duration-fast) var(--motion-easing),box-shadow var(--motion-duration-fast) var(--motion-easing),transform var(--motion-duration-fast) var(--motion-easing)}
+.sf-card:hover{border-color:var(--color-alpha-electric-blue-50-25);box-shadow:var(--shadow-elevation-3);transform:translateY(-2px)}
+.sf-card-media{position:relative;width:100%;overflow:hidden;background:var(--color-cloud-blue-95);aspect-ratio:16/9}
+.sf-card-media > :where(img,image-slot){position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform var(--motion-duration-normal) var(--motion-easing)}
+.sf-card:hover .sf-card-media > img{transform:scale(1.03)}
+.sf-card-badge{position:absolute;top:12px;right:12px;padding:4px 8px;background:rgba(255,255,255,.9);backdrop-filter:blur(4px);font-family:var(--font-family-body);font-weight:700;font-size:10px;text-transform:uppercase;letter-spacing:.15em;color:var(--color-neutral-30);border-radius:var(--radius-chip)}
+.sf-card-title{margin:0;font-family:var(--font-style-display-9-family);font-weight:var(--font-style-display-9-weight);font-size:var(--font-style-display-9-size);line-height:24px;color:var(--color-neutral-10);text-wrap:pretty}
+
+/* ── Logo wall cell: an image the user drops in, at the wall's mark height ── */
+.sf-logo-cell{display:flex;align-items:center;justify-content:center;width:150px;height:40px}
+
+/* ── CTA separation rule ───────────────────────────────────────────────────────
+   A CTA block sits 48px below the content above it — twice a frame's normal content gap.
+   The row is already a gap child of its column, so it only adds the DIFFERENCE: the total
+   from the last line of copy to the buttons lands on 48px whatever the breakpoint's
+   content gap is, and never goes negative if that gap is already larger. Buttons WITHIN the
+   row sit 24px apart — one gap step, so a primary/secondary pair reads as one CTA block
+   rather than two unrelated buttons. */
+.sf-cta-row{display:flex;flex-wrap:wrap;align-items:center;gap:24px;margin-top:max(0px,calc(48px - var(--space-content-md)))}

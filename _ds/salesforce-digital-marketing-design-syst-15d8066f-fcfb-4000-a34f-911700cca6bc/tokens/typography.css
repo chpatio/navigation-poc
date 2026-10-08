@@ -1,0 +1,43 @@
+:root{
+/* Layer 1 — family / weight / size / letter-spacing primitives */
+--font-family-display:"Avant Garde For Salesforce","ITC Avant Garde Gothic",Arial,sans-serif;
+--font-family-body:"Salesforce Sans",Arial,sans-serif;
+--font-weight-regular:400;--font-weight-demi:600;--font-weight-bold:700;
+--font-size-12:12px;--font-size-14:14px;--font-size-16:16px;--font-size-18:18px;--font-size-20:20px;
+--font-size-24:24px;--font-size-32:32px;--font-size-40:40px;--font-size-48:48px;--font-size-56:56px;--font-size-80:80px;
+--font-letter-spacing-neg-4:-0.0036em;--font-letter-spacing-neg-3:-0.003em;--font-letter-spacing-neg-2:-0.0025em;--font-letter-spacing-neg-1:-0.0015em;
+--font-letter-spacing-0:0em;--font-letter-spacing-1:0.00125em;--font-letter-spacing-2:0.002em;
+--font-line-height-18:18px;--font-line-height-21:21px;--font-line-height-24:24px;--font-line-height-27:27px;--font-line-height-30:30px;
+--font-line-height-40:40px;--font-line-height-45:45px;--font-line-height-54:54px;--font-line-height-63:63px;--font-line-height-90:90px;
+--font-paragraph-spacing-8:8px;--font-paragraph-spacing-12:12px;--font-paragraph-spacing-14:14px;--font-paragraph-spacing-16:16px;
+
+/* Convenience line-height multiplier names (used by the composite aliases below) */
+--font-line-height-tight:1.125;--font-line-height-snug:1.25;--font-line-height-normal:1.5;
+
+/* Layer 2 — composite style aliases: --font-style-<role>-<field> (spec/aliases.md §3.2) */
+--font-style-display-1-family:var(--font-family-display);--font-style-display-1-weight:var(--font-weight-demi);--font-style-display-1-size:var(--font-size-80);--font-style-display-1-line-height:1.125;--font-style-display-1-letter-spacing:var(--font-letter-spacing-neg-4);
+--font-style-display-2-family:var(--font-family-display);--font-style-display-2-weight:var(--font-weight-demi);--font-style-display-2-size:var(--font-size-56);--font-style-display-2-line-height:1.125;--font-style-display-2-letter-spacing:var(--font-letter-spacing-neg-3);
+--font-style-display-3-family:var(--font-family-display);--font-style-display-3-weight:var(--font-weight-demi);--font-style-display-3-size:var(--font-size-48);--font-style-display-3-line-height:1.125;--font-style-display-3-letter-spacing:var(--font-letter-spacing-neg-2);
+--font-style-display-4-family:var(--font-family-display);--font-style-display-4-weight:var(--font-weight-demi);--font-style-display-4-size:var(--font-size-40);--font-style-display-4-line-height:1.125;--font-style-display-4-letter-spacing:var(--font-letter-spacing-neg-2);
+--font-style-display-5-family:var(--font-family-display);--font-style-display-5-weight:var(--font-weight-demi);--font-style-display-5-size:var(--font-size-32);--font-style-display-5-line-height:1.25;--font-style-display-5-letter-spacing:var(--font-letter-spacing-neg-1);
+--font-style-display-6-family:var(--font-family-display);--font-style-display-6-weight:var(--font-weight-demi);--font-style-display-6-size:var(--font-size-24);--font-style-display-6-line-height:1.25;--font-style-display-6-letter-spacing:var(--font-letter-spacing-neg-1);
+--font-style-display-7-family:var(--font-family-display);--font-style-display-7-weight:var(--font-weight-demi);--font-style-display-7-size:var(--font-size-20);--font-style-display-7-line-height:1.5;--font-style-display-7-letter-spacing:var(--font-letter-spacing-neg-1);
+--font-style-display-8-family:var(--font-family-display);--font-style-display-8-weight:var(--font-weight-demi);--font-style-display-8-size:var(--font-size-18);--font-style-display-8-line-height:1.5;--font-style-display-8-letter-spacing:var(--font-letter-spacing-neg-1);
+--font-style-display-9-family:var(--font-family-display);--font-style-display-9-weight:var(--font-weight-demi);--font-style-display-9-size:var(--font-size-16);--font-style-display-9-line-height:1.5;--font-style-display-9-letter-spacing:var(--font-letter-spacing-2);
+
+--font-style-body-copy-1-family:var(--font-family-body);--font-style-body-copy-1-weight:var(--font-weight-regular);--font-style-body-copy-1-size:var(--font-size-20);--font-style-body-copy-1-line-height:1.5;--font-style-body-copy-1-letter-spacing:var(--font-letter-spacing-1);
+--font-style-body-copy-2-family:var(--font-family-body);--font-style-body-copy-2-weight:var(--font-weight-regular);--font-style-body-copy-2-size:var(--font-size-18);--font-style-body-copy-2-line-height:1.5;--font-style-body-copy-2-letter-spacing:var(--font-letter-spacing-1);
+--font-style-body-copy-3-family:var(--font-family-body);--font-style-body-copy-3-weight:var(--font-weight-regular);--font-style-body-copy-3-size:var(--font-size-16);--font-style-body-copy-3-line-height:1.5;--font-style-body-copy-3-letter-spacing:var(--font-letter-spacing-1);
+--font-style-body-copy-4-family:var(--font-family-body);--font-style-body-copy-4-weight:var(--font-weight-regular);--font-style-body-copy-4-size:var(--font-size-14);--font-style-body-copy-4-line-height:1.5;--font-style-body-copy-4-letter-spacing:var(--font-letter-spacing-0);
+--font-style-body-copy-5-family:var(--font-family-body);--font-style-body-copy-5-weight:var(--font-weight-regular);--font-style-body-copy-5-size:var(--font-size-12);--font-style-body-copy-5-line-height:1.5;--font-style-body-copy-5-letter-spacing:var(--font-letter-spacing-2);
+
+/* Bold companions — full 5-field aggregates at identical size / leading / tracking.
+   Sizes chain to the --font-size-* primitives so the Modern axis remaps them too.
+   Hard rule 2a binds the text eyebrow to body-copy-2-bold and the card eyebrow badge
+   to body-copy-4-bold, so all five roles must exist as complete aggregates. */
+--font-style-body-copy-1-bold-family:var(--font-family-body);--font-style-body-copy-1-bold-weight:var(--font-weight-bold);--font-style-body-copy-1-bold-size:var(--font-size-20);--font-style-body-copy-1-bold-line-height:1.5;--font-style-body-copy-1-bold-letter-spacing:var(--font-letter-spacing-1);
+--font-style-body-copy-2-bold-family:var(--font-family-body);--font-style-body-copy-2-bold-weight:var(--font-weight-bold);--font-style-body-copy-2-bold-size:var(--font-size-18);--font-style-body-copy-2-bold-line-height:1.5;--font-style-body-copy-2-bold-letter-spacing:var(--font-letter-spacing-1);
+--font-style-body-copy-3-bold-family:var(--font-family-body);--font-style-body-copy-3-bold-weight:var(--font-weight-bold);--font-style-body-copy-3-bold-size:var(--font-size-16);--font-style-body-copy-3-bold-line-height:1.5;--font-style-body-copy-3-bold-letter-spacing:var(--font-letter-spacing-1);
+--font-style-body-copy-4-bold-family:var(--font-family-body);--font-style-body-copy-4-bold-weight:var(--font-weight-bold);--font-style-body-copy-4-bold-size:var(--font-size-14);--font-style-body-copy-4-bold-line-height:1.5;--font-style-body-copy-4-bold-letter-spacing:var(--font-letter-spacing-0);
+--font-style-body-copy-5-bold-family:var(--font-family-body);--font-style-body-copy-5-bold-weight:var(--font-weight-bold);--font-style-body-copy-5-bold-size:var(--font-size-12);--font-style-body-copy-5-bold-line-height:1.5;--font-style-body-copy-5-bold-letter-spacing:var(--font-letter-spacing-2);
+}

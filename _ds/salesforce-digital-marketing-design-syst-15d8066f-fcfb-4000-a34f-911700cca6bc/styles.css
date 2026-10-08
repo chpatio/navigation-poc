@@ -1,0 +1,24 @@
+/* Salesforce Digital Marketing Design System — root stylesheet.
+
+   ONE live token layer. tokens/*.css is the canonical two-layer set, named per the DMS
+   design-tokens spec (--{family}-{role}), and it is the only colour source in the cascade.
+
+   tokens/figma/fig-tokens.css is deliberately NOT imported. It mirrors all 844 Figma
+   Variables under the kit's own raw names (--blue-blue-20, --neutral-neutral-100-white,
+   --yellow-95-2, --surface-container-1 …), which meant every colour was live under two or
+   three names at once — the same hex with a different prefix or a -2 suffix depending on which
+   source it came from. Nothing read those names; they only made the palette look three times
+   bigger than it is. Read that file to check a Figma value, never to bind to it. */
+@import "tokens/fonts.css";
+@import "tokens/palette.css";
+@import "tokens/colors.css";
+@import "tokens/backgrounds.css";
+@import "tokens/typography.css";
+@import "tokens/spacing.css";
+@import "tokens/effects.css";
+/* base.css — global CSS only (link defaults, focus ring, icon + state-layer utilities).
+      Components are NOT restyled here: components/ is the single source for every button,
+      field, card and band. */
+@import "base.css";
+/* blocks.css — the page-section layout cascades (media queries only). */
+@import "blocks.css";

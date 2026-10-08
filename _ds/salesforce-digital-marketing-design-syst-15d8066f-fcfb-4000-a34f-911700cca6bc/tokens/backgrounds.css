@@ -1,0 +1,103 @@
+/* ═══ Backgrounds — the sanctioned blade surfaces ═══
+   The catalogue of every background a blade may use, Day and Night, as named aliases over
+   tokens/palette.css. Nothing here is a new value.
+
+   RULES
+   1. A blade paints ONE background. Never stack two gradients, and never put a background on
+      <body> or <main> — every visible pixel is painted by a blade.
+   2. Day backgrounds on Day surfaces, Night backgrounds only inside data-theme="night".
+      Pairing a Night surface with Day inks (or the reverse) is the one way to break contrast.
+   3. Solid accent tints (95 / 90) are page-level moments, not per-card fills — cards stay
+      white islands on top of them (card-island rule).
+   4. Gradients run top-to-bottom by default. The "flipped" variants invert the ramp so the
+      light end meets the next blade; use them when two gradient blades sit adjacent, so the
+      seam reads as continuous.
+   5. Galaxy is direction-variant: the same stops rotated. Use one direction per page.
+   ═══════════════════════════════════════════════════════════════════════════ */
+:root{
+/* ── Day solids ─────────────────────────────────────────────────────────── */
+--bg-day-neutral:var(--color-neutral-100);
+--bg-day-cloud-blue:var(--color-cloud-blue-95);
+--bg-day-blue:var(--color-blue-95);
+--bg-day-yellow:var(--color-yellow-95);
+--bg-day-hot-orange:var(--color-hot-orange-95);
+--bg-day-orange:var(--color-orange-95);
+--bg-day-pink:var(--color-pink-95);
+--bg-day-green:var(--color-green-90);
+--bg-day-teal:var(--color-teal-95);
+--bg-day-violet:var(--color-violet-95);
+--bg-day-indigo:var(--color-indigo-95);
+--bg-day-purple:var(--color-purple-95);
+--bg-day-aubergine:var(--color-aubergine-95);
+
+/* ── Day gradients. `-2` variants start a step higher on the blue ladder;
+      `-flipped` inverts the direction (0deg) for adjacent gradient blades. ── */
+--bg-day-morning:var(--gradient-day-morning);
+--bg-day-morning-flipped:linear-gradient(0deg,#90d0fe 0%,#eaf5fe 100%); /* @kind color */
+--bg-day-midday:var(--gradient-day-midday);
+--bg-day-dusk:var(--gradient-day-dusk);
+--bg-day-teal-1:var(--gradient-day-secondary-teal-1);
+--bg-day-teal-1-flipped:linear-gradient(0deg,#90d0fe 0%,#eaf5fe 62.02%,#def9f3 100%); /* @kind color */
+--bg-day-teal-2:linear-gradient(180deg,#00b3ff 0%,#90d0fe 21.43%,#eaf5fe 68.72%,#def9f3 100%); /* @kind color */
+--bg-day-pink-1:var(--gradient-day-secondary-pink-1);
+--bg-day-pink-1-flipped:linear-gradient(0deg,#90d0fe 0%,#eaf5fe 62.02%,#fef0f3 100%); /* @kind color */
+--bg-day-pink-2:linear-gradient(180deg,#00b3ff 0%,#90d0fe 21.43%,#eaf5fe 68.72%,#fef0f3 100%); /* @kind color */
+--bg-day-violet-1:var(--gradient-day-secondary-violet-1);
+--bg-day-violet-1-flipped:linear-gradient(0deg,#90d0fe 0%,#eaf5fe 62.02%,#f9f0ff 100%); /* @kind color */
+--bg-day-violet-2:linear-gradient(180deg,#00b3ff 0%,#90d0fe 21.43%,#eaf5fe 68.72%,#f9f0ff 100%); /* @kind color */
+--bg-day-yellow-1:var(--gradient-day-secondary-yellow-1);
+--bg-day-yellow-1-flipped:linear-gradient(0deg,#90d0fe 0%,#eaf5fe 62.02%,#fbf3e0 100%); /* @kind color */
+--bg-day-yellow-2:linear-gradient(180deg,#00b3ff 0%,#90d0fe 21.43%,#eaf5fe 68.72%,#fbf3e0 100%); /* @kind color */
+
+/* ── Day tint fades: the tint dissolves to transparent, so the band meets a photograph or
+      the next blade without a hard edge. `fade-in` = solid at the bottom, `fade-out` =
+      solid at the top. ─────────────────────────────────────────────────────────────── */
+--bg-day-hot-orange-fade-in:var(--gradient-hot-orange-95-from-top);
+--bg-day-hot-orange-fade-out:var(--gradient-hot-orange-95-from-bottom);
+--bg-day-orange-fade-in:var(--gradient-orange-95-from-top);
+--bg-day-orange-fade-out:var(--gradient-orange-95-from-bottom);
+--bg-day-yellow-fade-in:var(--gradient-yellow-95-from-top);
+--bg-day-yellow-fade-out:var(--gradient-yellow-95-from-bottom);
+--bg-day-green-fade-in:var(--gradient-green-90-from-top);
+--bg-day-green-fade-out:var(--gradient-green-90-from-bottom);
+--bg-day-teal-fade-in:var(--gradient-teal-95-from-top);
+--bg-day-teal-fade-out:var(--gradient-teal-95-from-bottom);
+--bg-day-cloud-blue-fade-in:var(--gradient-cloud-blue-95-from-top);
+--bg-day-cloud-blue-fade-out:var(--gradient-cloud-blue-95-from-bottom);
+--bg-day-blue-fade-in:var(--gradient-blue-95-from-top);
+--bg-day-blue-fade-out:var(--gradient-blue-95-from-bottom);
+--bg-day-indigo-fade-in:var(--gradient-indigo-95-from-top);
+--bg-day-indigo-fade-out:var(--gradient-indigo-95-from-bottom);
+--bg-day-purple-fade-in:var(--gradient-purple-95-from-top);
+--bg-day-purple-fade-out:var(--gradient-purple-95-from-bottom);
+--bg-day-violet-fade-in:var(--gradient-violet-95-from-top);
+--bg-day-violet-fade-out:var(--gradient-violet-95-from-bottom);
+--bg-day-pink-fade-in:var(--gradient-pink-95-from-top);
+--bg-day-pink-fade-out:var(--gradient-pink-95-from-bottom);
+--bg-day-aubergine-fade-in:var(--gradient-aubergine-95-from-top);
+--bg-day-aubergine-fade-out:var(--gradient-aubergine-95-from-bottom);
+
+/* ── Night solids ───────────────────────────────────────────────────────── */
+--bg-night-cloud-blue:var(--color-cloud-blue-20);
+--bg-night-blue:var(--color-blue-20);
+--bg-night-blue-deep:var(--color-blue-10);
+--bg-night-electric-blue:var(--color-electric-blue-10);
+--bg-night-green:var(--color-green-20);
+--bg-night-teal:var(--color-teal-30);
+--bg-night-pink:var(--color-pink-20);
+--bg-night-indigo:var(--color-indigo-20);
+--bg-night-purple:var(--color-purple-20);
+--bg-night-violet:var(--color-violet-20);
+--bg-night-aubergine:var(--color-aubergine-20);
+--bg-night-yellow:var(--color-yellow-30);
+--bg-night-hot-orange:var(--color-hot-orange-20);
+--bg-night-orange:var(--color-orange-30);
+
+/* ── Night gradients. Evening is the canonical navy-to-cloud ramp; Galaxy is the
+      deep navy-to-electric field whose variants are the same stops rotated. ── */
+--bg-night-evening:var(--gradient-night-evening);
+--bg-night-galaxy:linear-gradient(135deg,#001642 0%,#001e5b 45%,#022ac0 100%); /* @kind color */
+--bg-night-galaxy-down:linear-gradient(180deg,#001642 0%,#001e5b 45%,#022ac0 100%); /* @kind color */
+--bg-night-galaxy-up:linear-gradient(0deg,#001642 0%,#001e5b 45%,#022ac0 100%); /* @kind color */
+--bg-night-galaxy-right:linear-gradient(90deg,#001642 0%,#001e5b 45%,#022ac0 100%); /* @kind color */
+}

@@ -1,0 +1,41 @@
+:root{
+/* ═══ Radius — Layer 1 primitives (Figma "Shape" collection) ═══ */
+--radius-1:16px;--radius-2:12px;--radius-3:8px;--radius-4:4px;--radius-circle:9999px;
+/* Layer 2 — component aliases (values verified against the Figma Shape collection) */
+--radius-hero-card:var(--radius-1);--radius-card:var(--radius-2);--radius-card-nested:var(--radius-3);
+--radius-button:var(--radius-circle);--radius-input:var(--radius-4);--radius-chip:var(--radius-circle);--radius-avatar:var(--radius-circle);
+--radius-image-large:var(--radius-1);--radius-image-medium:var(--radius-2);--radius-image-small:var(--radius-3);
+--radius-modal:var(--radius-1);--radius-tooltip:var(--radius-3);--radius-badge:var(--radius-circle);
+
+/* ═══ Border widths — Figma "Shape" collection (border-1…5, stroke-1) ═══ */
+--border-width-1:1px;--border-width-2:2px;--border-width-3:3px;--border-width-4:4px;--border-width-5:5px;
+--border-width-hairline:var(--border-width-1);--border-width-engaged:var(--border-width-2);--border-width-focus:var(--border-width-3);
+
+/* ═══ Elevation — Figma "Elevation" collection, Levels 1–4 verbatim ═══
+   Each level is emitted from its own X/Y/Blur/Spread variables; Level 4 is single-stop.
+   Level 0 is the absence of a shadow (page canvas, scrim reset) — no token needed. */
+--shadow-elevation-fill-8:rgba(24,24,24,.08); /* @kind shadow */
+--shadow-elevation-fill-12:rgba(24,24,24,.12); /* @kind shadow */
+--shadow-elevation-fill-16:rgba(24,24,24,.16); /* @kind shadow */
+--shadow-elevation-fill-20:rgba(24,24,24,.2); /* @kind shadow */
+--shadow-elevation-stroke:rgba(24,24,24,.04); /* @kind shadow */
+--shadow-elevation-1:0 0 2px 0 var(--shadow-elevation-fill-8),0 2px 4px 1px var(--shadow-elevation-fill-16);
+--shadow-elevation-2:0 2px 8px -2px var(--shadow-elevation-fill-8),0 8px 12px -2px var(--shadow-elevation-fill-16);
+--shadow-elevation-3:0 12px 24px -4px var(--shadow-elevation-fill-8),0 16px 32px -4px var(--shadow-elevation-fill-16);
+--shadow-elevation-4:0 24px 48px -4px var(--shadow-elevation-fill-20);
+--shadow-elevation-active:0 1px 4px -2px var(--shadow-elevation-stroke),0 4px 8px -2px var(--shadow-elevation-fill-12);
+--shadow-decorative-1:4px 8px 15px 0 var(--shadow-elevation-fill-12);
+
+/* ═══ Motion — this system's own layer; flagged as a gap in the DMS bundle (gaps.json) ═══ */
+--motion-duration-fast:150ms; /* @kind other */
+--motion-duration-normal:200ms; /* @kind other */
+--motion-easing:ease-out; /* @kind other */
+--motion-hover-transform:translateY(-2px) scale(1.02); /* @kind other */
+--motion-pressed-transform:translateY(0) scale(0.98); /* @kind other */
+}
+/* Night — the Figma Elevation fills invert to white veils on dark surfaces */
+[data-theme="night"]{
+--shadow-elevation-fill-8:rgba(255,255,255,.08);--shadow-elevation-fill-12:rgba(255,255,255,.12);
+--shadow-elevation-fill-16:rgba(255,255,255,.16);--shadow-elevation-fill-20:rgba(255,255,255,.2);
+--shadow-elevation-stroke:rgba(255,255,255,.04);
+}

@@ -1,0 +1,35 @@
+/* Base layer — the only global CSS this system ships.
+   It deliberately does NOT restyle components: the React components in components/ are the
+   single source for every button, field, card and band. A parallel class-based copy of them
+   would be a second system to keep in sync, which is exactly the drift we removed.
+
+   What belongs here: things that are global by nature (link defaults, a focus-ring utility,
+   the icon mask utility, the interactive-container state layer). Nothing here invents a
+   value — every declaration reads a token. */
+
+/* Links: never leave them browser-default blue. */
+a{color:var(--color-link)}
+a:hover{color:var(--color-link-hover)}
+a:active{color:var(--color-link-active)}
+
+/* One focus ring everywhere — controls, cards, links (DMS hard rule 2c ii). */
+.sf-focus-ring:focus-visible,
+:where(button,a,input,select,textarea,[tabindex]):focus-visible{outline:3px solid var(--color-border-focus);outline-offset:2px}
+
+/* Icon utility for plain-HTML contexts. React uses the Icon component, which inlines the
+   glyph data; here you supply the mask yourself:
+   <span class="sf-icon sf-icon--sm" style="-webkit-mask-image:url(assets/icons/glyph-check.svg);mask-image:url(assets/icons/glyph-check.svg)"></span>
+   Paths are document-relative, so set them from the page that loads this file. */
+.sf-icon{display:inline-block;width:1.25em;height:1.25em;flex-shrink:0;background:currentColor;-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;transition:background-color var(--motion-duration-fast) var(--motion-easing)}
+.sf-icon--xs{width:12px;height:12px}
+.sf-icon--sm{width:16px;height:16px}
+.sf-icon--md{width:20px;height:20px}
+.sf-icon--lg{width:32px;height:32px}
+.sf-icon--xl{width:48px;height:48px}
+
+/* State layer — hover / active tint for an interactive container (Semantics v2.0, group E, Option α:
+   achromatic overlay, black in Day and white in Night). `active` is the latched state, not mid-click. */
+.has-state-layer{position:relative;isolation:isolate}
+.has-state-layer::after{content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;background:var(--color-state-layer-color);opacity:0;transition:opacity var(--motion-duration-fast) var(--motion-easing)}
+.has-state-layer:hover::after{opacity:var(--color-state-layer-opacity-hover)}
+.has-state-layer[aria-pressed="true"]::after,.has-state-layer[aria-selected="true"]::after,.has-state-layer[aria-checked="true"]::after,.has-state-layer:has(:checked)::after,.has-state-layer[aria-current]::after,.has-state-layer[data-state="active"]::after{opacity:var(--color-state-layer-opacity-active)}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/salesforce-digital-marketing-design-syst-15d8066f-fcfb-4000-a34f-911700cca6bc/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/salesforce-digital-marketing-design-syst-15d8066f-fcfb-4000-a34f-911700cca6bc/tokens/palette.css">
+<link rel="stylesheet" href="_ds/salesforce-digital-marketing-design-syst-15d8066f-fcfb-4000-a34f-911700cca6bc/tokens/colors.css">
+<link rel="stylesheet" href="_ds/salesforce-digital-marketing-design-syst-15d8066f-fcfb-4000-a34f-911700cca6bc/tokens/backgrounds.css">
+<link rel="stylesheet" href="_ds/salesforce-digital-marketing-design-syst-15d8066f-fcfb-4000-a34f-911700cca6bc/tokens/typography.css">
+<link rel="stylesheet" href="_ds/salesforce-digital-marketing-design-syst-15d8066f-fcfb-4000-a34f-911700cca6bc/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/salesforce-digital-marketing-design-syst-15d8066f-fcfb-4000-a34f-911700cca6bc/tokens/effects.css">
+<link rel="stylesheet" href="_ds/salesforce-digital-marketing-design-syst-15d8066f-fcfb-4000-a34f-911700cca6bc/base.css">
+<link rel="stylesheet" href="_ds/salesforce-digital-marketing-design-syst-15d8066f-fcfb-4000-a34f-911700cca6bc/blocks.css">
+<link rel="stylesheet" href="_ds/salesforce-digital-marketing-design-syst-15d8066f-fcfb-4000-a34f-911700cca6bc/styles.css">
+<script src="_ds/salesforce-digital-marketing-design-syst-15d8066f-fcfb-4000-a34f-911700cca6bc/_ds_bundle.js"></script>
+<style>body{margin:0;background:#eef1f6;font-family:'Salesforce Sans',sans-serif}a{color:#066afe}a:hover{color:#0b4fc7}</style>
+</helmet>
+<section style="padding:48px;display:flex;flex-direction:column;gap:56px;width:max-content">
+  <div style="max-width:720px">
+    <div style="font:600 12px/1 'Salesforce Sans';letter-spacing:.08em;text-transform:uppercase;color:#066afe">Global header</div>
+    <h1 style="font:600 40px/1.125 'Avant Garde For Salesforce',sans-serif;margin:12px 0 8px;color:#032d60">Responsive breakpoints</h1>
+    <p style="font:400 16px/1.5 'Salesforce Sans';margin:0;color:#444">The global header shown at the five grid breakpoints, each with a developer spec below it.</p>
+    <ul style="margin:12px 0 0;padding-left:20px;font:400 14px/1.5 'Salesforce Sans';color:#444;display:flex;flex-direction:column;gap:4px">
+      <li><b>Width:</b> the header spans the full viewport inside the page margin. It is not capped at 1280px.</li>
+      <li><b>Nav:</b> links fold into a “More” menu when they don’t fit. At narrow widths the whole nav moves into a hamburger menu.</li>
+    </ul>
+    <div style="margin-top:16px;padding:16px;background:#fff;border:1px solid #d6dde8;border-radius:8px;font:400 14px/1.5 'Salesforce Sans';color:#333;display:flex;flex-direction:column;gap:10px;max-width:720px">
+      <div style="font:700 11px/1 'Salesforce Sans';letter-spacing:.08em;text-transform:uppercase;color:#066afe">Implementation notes</div>
+      <div><b>Component.</b> Use the design system <code>SiteHeader</code>. Don’t rebuild it. Margins and gutters come from <code>--space-page-margin</code> and <code>--space-page-gutter</code>.</div>
+      <div><b>Two layouts.</b> The <b>full header</b> shows the nav row. The <b>compact header</b> replaces the nav with a hamburger menu.</div>
+      <div><b>Switch point.</b> The header changes layout when its own inner width drops below 1024px. With 48px margins that is a viewport of about 1120px, so the 1024px frame already shows the hamburger.</div>
+      <div><b>Height.</b> 72px for the full header, 56px for the compact header. Content is vertically centred; there is no top or bottom padding.</div>
+      <div><b>Utility icons.</b> Each is a 44 × 44 tap area, 4px apart. Login drops its label below 1024px, call and region icons hide below 768px, and the account label hides below 480px.</div>
+      <div><b>“Try for free” button.</b> 44px tall on desktop. In the compact header it is 28px tall with 12px side padding and 14px text.</div>
+      <div><b>Hamburger and logo.</b> In the compact header, the logo sits 8px to its right.</div>
+    </div>
+    </div>
+  </div>
+  <sc-for list="{{ frames }}" as="f" hint-placeholder-count="5">
+    <div id="{{ f.id }}" style="display:flex;flex-direction:column;gap:12px;scroll-margin:48px">
+      <div style="display:flex;align-items:baseline;gap:12px">
+        <span style="background:#032d60;color:#fff;font:700 12px/1 'Salesforce Sans';padding:6px 10px;border-radius:999px">{{ f.id }}</span>
+        <span style="white-space:nowrap;font:600 20px/1.25 'Avant Garde For Salesforce',sans-serif;color:#032d60">{{ f.name }} · {{ f.width }}px</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:16px;align-items:flex-start">
+        <div style="width:{{ f.iw }}px;flex:none;background:#fff;box-shadow:0 2px 12px rgba(3,45,96,.15)">
+          <iframe src="Header Frame.dc.html" title="{{ f.name }}" style="display:block;border:0;width:{{ f.iw }}px;height:150px"></iframe>
+        </div>
+        <div style="width:{{ f.iw }}px;max-width:640px;box-sizing:border-box;flex:none;background:#fff;border:1px solid #d6dde8;border-radius:8px;padding:16px;display:flex;flex-direction:column;gap:12px">
+          <div style="font:700 11px/1 'Salesforce Sans';letter-spacing:.08em;text-transform:uppercase;color:#066afe">Dev spec</div>
+          <p style="margin:0;font:400 14px/1.5 'Salesforce Sans';color:#333">{{ f.behavior }}</p>
+          <div style="display:grid;grid-template-columns:auto 1fr;column-gap:16px;row-gap:6px;font:400 13px/1.4 'Salesforce Sans';color:#333">
+            <sc-for list="{{ f.specs }}" as="r" hint-placeholder-count="8">
+              <div style="font-weight:700;color:#032d60;white-space:nowrap">{{ r.k }}</div>
+              <div style="font-family:ui-monospace,Menlo,monospace;font-size:12px">{{ r.v }}</div>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+    </div>
+  </sc-for>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const frames = [
+      { id: '1a', name: 'Large desktop', width: 1600, behavior: "Full nav row, utilities (call, region, search, account + Login), green CTA. No cap on the row.", specs: [{"k":"Height","v":"72px"},{"k":"Side margin","v":"48px (--space-page-margin)"},{"k":"Row gap","v":"32px (--space-content-xl)"},{"k":"Logo","v":"wordmark cloud, 34px tall"},{"k":"Nav","v":"text links, fold to “More” by measure"},{"k":"Utility icons","v":"call · search · region · account+Login"},{"k":"Icon hit area","v":"44 × 44, gap 4px"},{"k":"Login","v":"icon + label, 8px gap, 13px left pad"},{"k":"CTA","v":"44px tall, 12px left margin"}] },
+      { id: '1b', name: 'Desktop', width: 1440, behavior: "Same as 1a; “More” appears only if measured width runs out.", specs: [{"k":"Height","v":"72px"},{"k":"Side margin","v":"48px (--space-page-margin)"},{"k":"Row gap","v":"32px (--space-content-xl)"},{"k":"Logo","v":"wordmark cloud, 34px tall"},{"k":"Nav","v":"text links, fold to “More” by measure"},{"k":"Utility icons","v":"call · search · region · account+Login"},{"k":"Icon hit area","v":"44 × 44, gap 4px"},{"k":"Login","v":"icon + label, 8px gap, 13px left pad"},{"k":"CTA","v":"44px tall, 12px left margin"}] },
+      { id: '1c', name: 'Tablet landscape', width: 1024, behavior: "Still hamburger: the nav row needs 1024px inside the 48px margins, so it returns at about 1120px viewport.", specs: [{"k":"Height","v":"56px"},{"k":"Side margin","v":"48px"},{"k":"Row gap","v":"32px gutter"},{"k":"Burger","v":"40 × 40, then 8px to logo"},{"k":"Logo","v":"30px tall"},{"k":"Nav","v":"hidden (in hamburger menu)"},{"k":"Utilities","v":"call · search · region · account (icon only)"},{"k":"Icon hit area","v":"44 × 44, gap 4px"},{"k":"CTA","v":"28px tall, 12px side pad, 14px text"}] },
+      { id: '1d', name: 'Tablet portrait', width: 768, behavior: "Hamburger + logo, full utility set, icon-only account.", specs: [{"k":"Height","v":"56px"},{"k":"Side margin","v":"32px"},{"k":"Row gap","v":"24px gutter"},{"k":"Burger","v":"40 × 40, then 8px to logo"},{"k":"Logo","v":"30px tall"},{"k":"Nav","v":"hidden (in hamburger menu)"},{"k":"Utilities","v":"call · search · region · account (icon only)"},{"k":"Icon hit area","v":"44 × 44, gap 4px"},{"k":"CTA","v":"28px tall, 12px side pad, 14px text"}] },
+      { id: '1e', name: 'Mobile', width: 375, behavior: "Hamburger + logo, search + account only, compact CTA.", specs: [{"k":"Height","v":"56px"},{"k":"Side margin","v":"24px"},{"k":"Row gap","v":"12px (override)"},{"k":"Burger","v":"40 × 40, then 8px to logo"},{"k":"Logo","v":"30px tall"},{"k":"Nav","v":"hidden (in hamburger menu)"},{"k":"Utilities","v":"search · account (call, region hidden)"},{"k":"Icon hit area","v":"44 × 44, gap 4px"},{"k":"CTA","v":"28px tall, 12px side pad, 14px text"}] }
+    ];
+    return { frames: frames.map(f => ({ ...f, iw: f.width + 1 })) };
+  }
+}
+</script>
+</body>
+</html>
